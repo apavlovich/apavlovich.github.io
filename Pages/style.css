@@ -1,0 +1,142 @@
+/* 
+CSS Style Sheet 
+*/
+
+/* Body */
+body {
+    background-color: lightgrey;
+    height: 750px;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+  }
+
+  
+  /* Navbar */
+  .navbar {
+    max-height: 50px;
+  }
+  .navigation .navbar-brand {
+    color: rgb(35, 182, 182);
+    margin-left: 0px;
+    padding: inherit;
+    font-weight: bold;
+    background-color: rgb(255, 255, 255);
+    font-family: Menlo, Arial, Helvetica, sans-serif;
+    float: left;
+  }
+  .navbar {
+    background-color: white;
+    font-size: 25px; 
+  }
+  .active, .dropdown-menu .dropdown-item:active a:hover {
+    background-color: white;
+  }
+  .dropdown-item {
+    color: rgb(35, 182, 182);
+  }
+  .dropdown .dropdown-menu .dropdown-item:active, .dropdown .dropdown-menu .dropdown-item:hover {
+    background-color: #f6b500;
+  }
+  
+  .nav-link:hover {
+    background-color:#f6b500;
+   }
+  
+  .navbar-brand:hover {
+  color: #f67700;
+  }
+  a {
+    color: #E7E7E7;
+    font-size: 15px;
+  }
+  
+  /* Images */
+  img{
+    width:120%;
+    height:100%;
+  }
+  .active, .panel:hover {
+    border-color:rgb(255, 196, 0);
+    border-style: solid;
+    
+  }
+  .vizualization {
+    width:50%;
+    height:100%;
+  }
+  
+  /* Title */
+  .title {
+    color: rgb(35, 182, 182);
+    font-family: Menlo, Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+    padding-top: 10px;
+  }
+  
+  /* Paragraph */
+  p {
+  color: black;
+  font-family: Menlo, Helvetica, sans-serif;
+  font-size: 16px;
+  }
+  
+  /* Box */
+  .box {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 10px 50px 50px;
+    color: #ffffff;
+    background-color: rgb(255, 255, 255);
+  
+  }
+  /* Table */
+  .table {
+    font-size: 15px;
+    border-top-color: rgb(255, 255, 255);
+    width: 100%;
+  }
+  
+  /* Footer */
+  footer {
+  background-color: rgb(35, 182, 182);
+  border-top-style: solid;
+  border-top-width: 5px;
+  border-top-color: rgb(255, 246, 246);
+  color: rgb(255, 255, 255);
+  min-height: 50px;
+  font-family: Menlo, Helvetica, sans-serif;
+  font-size: 10px;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 15px;
+  }
+  
+  /* Media Queries */
+  @media(max-width: 992px) {
+    .navbar-expand-lg {
+    background-color: #000000;
+    }
+    .navbar {
+      max-height: none;
+      padding: inherit;
+    }
+    .navbar div {
+      margin: inherit;
+      background-color: white;
+    }
+    .navbar-brand {
+      padding: 10px;
+    }
+    button{
+      margin-right: 30px;
+    }
+    button:focus {
+      outline: 1px dotted;
+      outline: auto 5px;
+    }
+  }
+
