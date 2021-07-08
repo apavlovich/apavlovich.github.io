@@ -103,7 +103,7 @@ var data = d3.json("data/samples.json").then((data) => {
             {
                 domain: { x: [0, 1], y: [0, 1] },
                 value: defaultWfreq,
-                title: { text: '<b> Belly Button Washing Frequency </b> <br>Scrubs per Week'},
+                title: { text: '<b> Belly Button Washing Frequency </b>'},
                 type: "indicator",
                 mode: "gauge+number",
                    //Add steps to display gradual color change of range
