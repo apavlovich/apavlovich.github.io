@@ -1,11 +1,11 @@
 //Videogame Analysis
 
-var platforms = ['3DS', 'DS', 'GB', 'GBA', 'GBC', 'PC', 'PS2', 'PS', 'PS3', 'PS4', 'PSN', 'PSP', 'Wii', 'WiiU', 'WinP', 'X360', 'XOne', 'XB', 'XBL', 'N64', 'NES', 'iOS']
+var genres = ['Action', 'Action-Adventure', 'Adventure', 'Board Game', 'Education', 'Fighting', 'Misc', 'MMO', 'Music', 'Party', 'Platform', 'Puzzle', 'Racing', 'Role-Playing', 'Sandbox', 'Shooter', 'Simulation', 'Sports', 'Strategy', 'Visual Novel']
 
 d3.csv('https://raw.githubusercontent.com/apavlovich/apavlovich.github.io/main/project2/resources/vgsales-12-4-2019-short.csv',
 (err, rows) => {
-    var data = platforms.map(y => {
-        var d = rows.filter(r => r.Platform === y)
+    var data = genres.map(y => {
+        var d = rows.filter(r => r.Genre === y)
 
         return {
             type: 'bar',

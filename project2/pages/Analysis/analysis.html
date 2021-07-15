@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Project 2 | Analysis</title>
   <meta charset="utf-8">
@@ -8,8 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src='https://cdn.plot.ly/plotly-2.2.0.min.js'></script>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
+
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -50,7 +50,6 @@
     .panel-default > .panel-heading-custom {
       background: rgb(3, 70, 75); color: white;
     }
-
   </style>
 </head>
 
@@ -79,13 +78,22 @@
 <!--Graphs-->
   <div class="container">
     <div class="row">
+      <div class ="col-md-6">
+        <div class="well">
+          <h5>Select a Genre:</h5>
+          <select id="selDataset" onchange="optionChanged(this.value)"></select>
+        </div>
+      </div>
+    </div>
+    <div class ="row"></div>
       <div class="col-md-12">
         <div id='graph'></div>
       </div>
     </div>
   </div>
 
-
+  <script src='https://cdn.plot.ly/plotly-2.2.0.min.js'></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="analysis.js"></script>
   <script src="../../resources/vgsales-12-4-2019-short.csv"></script>
 
