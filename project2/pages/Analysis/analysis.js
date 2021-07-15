@@ -1,20 +1,61 @@
 //Videogame Analysis
 
-//read in data
-var years = ['1970', '1973', '1975', '1977', '1978', '1979', '1980', '1981', '1982', '1983', '1984', '1985', '1986', '1987', '1988', '1989', '1990', '1991', '1992', '1993', '1994', '1995', '1996', '1997', '1998', '1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020']
+d3.csv('resources/vgsales-12-4-2019-short.csv', function(err, rows){
+    function unpack(rows, key) {
+        return rows.map(function(row) {
+            return row[key];
+        });
+    }
 
-Plotly.d3.csv('../../resources/vgsales-12-4-2019-short.csv'),
-(err, rows) => {
-    var data = years.map(y => {
-        var d = rows.filter(r => r.Year === y)
+    var trace1 = {
+        type: "scatter",
+        mode: "lines",
+        name: 'Sales by Publisher',
+        x: unpack(rows, 'Year'),
+        y: unpack(rows, 'Publisher.Global_Sales'),
+        line: {color: '#17BECF'}
+    }
 
-        return {
-            type: 'bar',
-            name: y,
-            x: d.map(r => r.Platform),
-            y: d.map(r => r.Global_Sales)
+    var trace2 = {
+        type: "scatter",
+        mode: "lines",
+        name: 'Sales by Platform',
+        x: unpack(rows, 'Year'),
+        y: unpack(rows, 'Platform.Global_Sales'),
+        line: {color: '#7F7F7F'}
+    }
+
+    var data = [trace1, trace2];
+
+    var layout = {
+        title: 'Time Series with Rangeslider',
+        xaxis: {
+            autorange: true,
+            range: ['1970', '2020'],
+            rangeselector: {buttons: [
+                {
+                    count: 1,
+                    label: '1y',
+                    step: 'year',
+                    stepmode: 'backward'
+                },
+                {
+                    count: 6,
+                    label: '6y',
+                    step: 'year',
+                    stepmode: 'backward'
+                },
+                {step: 'all'}
+            ]},
+            rangeslider: {range: ['1970', '2020']},
+            type: 'year'
+        },
+        yaxis: {
+            autorange: true,
+            range: ['0', '25'],
+            type: 'linear'
         }
-    })
+    };
 
-    Plotly.newPlot('graph', data)
-}
+    Plotly.newPlot('timeseries', data, layout);
+})
