@@ -1,6 +1,7 @@
 //Videogame Analysis
 
 //Bar/line chart
+
     var xGames = [7667, 609, 5293, 16, 12, 2085, 9476, 74, 195, 75, 3445, 3162, 3030, 4551, 9, 4586, 2737, 5244, 3266, 260];
     var xSales = [1206.81999999998, 155.45, 346.169999999993, 0.31, 0.09, 363.979999999999, 596.639999999985, 11.86, 52.81, 5.39, 424.509999999998, 132.54, 547.709999999995, 502.119999999996, 1.89, 1051.73999999997, 320.319999999997, 1228.19999999998, 144.22, 3.46999999999999];
     var yGames = ['Action', 'Action-Adventure', 'Adventure', 'Board Game', 'Education', 'Fighting', 'Misc', 'MMO', 'Music', 'Party', 'Platform', 'Puzzle', 'Racing', 'Role-Playing', 'Sandbox', 'Shooter', 'Simulation', 'Sports', 'Strategy', 'Visual Novel'];
@@ -48,7 +49,7 @@
             showgrid: true
         },
         xaxis2: {
-            range: [-10, 1300],
+            range: [-50, 1300],
             domain: [0.8, 1],
             zeroline: false,
             showline: false,
@@ -120,3 +121,76 @@
     }
 
     Plotly.newPlot('graph', data, layout);
+
+//interactive with dropdown
+Plotly.d3.csv('https://raw.githubusercontent.com/JoshGallagher13/Project-2/main/resources/vgsales-12-4-2019-short.csv', function(err, rows){
+
+        function unpack(rows, key) {
+            return rows.map(function(row) { return row[key]; });
+        }
+    
+    var allGenreNames = unpack(rows, 'Genre'),
+        allYears = unpack(rows, 'Year'),
+        allScores = unpack(rows, 'Critic_Score'),
+        listofGenres = [],
+        currentGenre,
+        currentYear = [],
+        currentScore = [];
+    
+      for (var i = 0; i < allGenreNames.length; i++ ){
+        if (listofGenres.indexOf(allGenreNames[i]) === -1 ){
+          listofGenres.push(allGenreNames[i]);
+        }
+      }
+      
+      function getGenreData(chosenGenre) {
+        currentYear = [];
+        currentGenre = [];
+        for (var i = 0 ; i < allGenreNames.length ; i++){
+          if ( allGenreNames[i] === chosenGenre ) {
+            currentYear.push(allYears[i]);
+            currentScore.push(allGenreNames[i]);
+          } 
+        }
+      };
+    
+    // Default Country Data
+    setBubblePlot('Action');
+    
+    function setBubblePlot(chosenGenre) {
+        getGenreData(chosenGenre);  
+    
+        var trace1 = {
+            x: currentYear,
+            type: 'histogram',
+        };
+    
+        var data = [trace1];
+    
+        var layout = {
+            title: 'Number of Games Produced by Chosen Genre<br>'+ chosenGenre
+        };
+    
+        Plotly.newPlot('plotdiv', data, layout, {showSendToCloud: true});
+    };
+    
+    var innerContainer = document.querySelector('[data-num="0"'),
+        plotEl = innerContainer.querySelector('.plot'),
+        genreSelector = innerContainer.querySelector('.countrydata');
+    
+    function assignOptions(textArray, selector) {
+        for (var i = 0; i < textArray.length;  i++) {
+            var currentOption = document.createElement('option');
+            currentOption.text = textArray[i];
+            selector.appendChild(currentOption);
+        }
+    }
+    
+    assignOptions(listofGenres, genreSelector);
+    
+    function updateGenre(){
+        setBubblePlot(genreSelector.value);
+    }
+    
+    genreSelector.addEventListener('change', updateGenre, false);
+    }); 
