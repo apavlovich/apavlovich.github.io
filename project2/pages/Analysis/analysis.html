@@ -83,17 +83,17 @@
         <p>Use the interactive charts below to explore the dataset</p>
       </div>
     </div>
-    <div class ="row">
-      <div class ="col-md-4">
-        <div class="well">
-          <h5>Select a Genre:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        </div>
-      </div>
-    </div>
     <div class ="row"></div>
-      <div class="col-md-12">
+      <div class="col-md-6">
         <div id="graph"></div>
+      </div>
+      <div class ="row">
+        <div class ="col-md-6">
+          <div class="well">
+            <h5>Select a Genre to see game sales over time:</h5>
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -101,7 +101,6 @@
   <script src='https://cdn.plot.ly/plotly-2.2.0.min.js'></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="analysis.js"></script>
-  <script src="../../resources/vgsales-12-4-2019-short.csv"></script>
 
 
   <footer class="container-fluid text-center">
